@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'com.google.secrets_gradle_plugin' version '0.6'
 }
 
 android {
@@ -12,6 +14,9 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
+
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -29,15 +34,79 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+    }
 }
 
 dependencies {
+    // Core KTX
+    implementation "androidx.core:core-ktx:$version_core_ktx"
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    // AppCompat
+    implementation "androidx.appcompat:appcompat:$version_appcompat"
+    
+    // Material
+    implementation "com.google.android.material:material:$version_material"
+
+    // Constraint Layout
+    implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
+
+    // Kotlin Standard Library
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$version_kotlin"
+
+    // Data Binding
+    kapt "com.android.databinding:compiler:$version_data_binding"
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$version_navigation"
+
+    // Navigation UI KTX
+    implementation "androidx.navigation:navigation-ui-ktx:$version_navigation"
+
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$version_livedata_ktx"
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$version_viewmodel_ktx"
+
+    // Preference
+    implementation "androidx.preference:preference-ktx:$version_preference_ktx"
+
+    // Google Play Services Location
+    implementation "com.google.android.gms:play-services-location:$version_play_services_location"
+
+    // Lifecycle Extensions
+    implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle_extensions"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$version_retrofit"
+
+    // Logging Interceptor
+    implementation "com.squareup.okhttp3:logging-interceptor:$version_logging_interceptor"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$version_glide"
+    kapt "com.github.bumptech.glide:compiler:$version_glide"
+
+    // Shimmer Effect Layout
+    implementation "com.facebook.shimmer:shimmer:$version_shimmer_layout"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:$version_timber"
+
+    // Room
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
+    implementation "androidx.room:room-ktx:$version_room"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_coroutines"
+
+    testImplementation "junit:junit:$version_junit"
+    androidTestImplementation "androidx.test.ext:junit:$version_junit_ext"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$version_espresso_core"
 }
