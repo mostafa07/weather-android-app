@@ -10,90 +10,69 @@
             type="com.example.android.weather.ui.main.MainViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_frame_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <include
-            android:id="@+id/shimmer_layout"
-            layout="@layout/weather_data_shimmer_layout"
-            app:viewModel="@{viewModel}"
-            tools:visibility="invisible" />
-
-        <include
-            android:id="@+id/no_data_layout"
-            layout="@layout/weather_not_available_layout"
-            app:viewModel="@{viewModel}"
-            tools:visibility="invisible" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:shown="@{viewModel.isContentLoading}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="16dp"
-            app:shown="@{!viewModel.isContentLoading &amp;&amp; viewModel.currentWeather != null}"
             tools:context=".ui.main.MainActivity">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/city_name_text_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="end"
-                android:text="@{viewModel.currentWeather.city}"
+                android:background="@android:color/darker_gray"
                 android:textAppearance="@style/TextAppearance.Material3.DisplayLarge"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/temperature_text_view"
                 app:layout_constraintEnd_toStartOf="@id/country_name_text_view"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Cairo" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/country_name_text_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="@{viewModel.currentWeather.country}"
+                android:background="@android:color/darker_gray"
                 android:textAppearance="@style/TextAppearance.Material3.DisplaySmall"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/city_name_text_view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/city_name_text_view"
                 app:layout_constraintTop_toTopOf="@id/city_name_text_view"
-                app:layout_constraintVertical_bias="1.0"
-                tools:text="Egypt" />
+                app:layout_constraintVertical_bias="1.0" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/temperature_text_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:background="@android:color/darker_gray"
                 android:gravity="center"
-                android:text="@{viewModel.currentWeather.roundedTemperature + `°C`}"
                 android:textAppearance="@style/TextAppearance.Material3.DisplayLarge"
-                android:textSize="96sp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="17°C" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/description_text_view"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="16dp"
-                android:text="@{viewModel.currentWeather.description}"
+                android:background="@android:color/darker_gray"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/temperature_text_view"
-                tools:text="Sample dummy weather description" />
+                app:layout_constraintTop_toBottomOf="@id/temperature_text_view" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
 </layout>

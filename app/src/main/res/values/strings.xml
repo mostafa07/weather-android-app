@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Weather</string>
+
+    <string name="operation_failed">Operation Failed</string>
+
+    <string name="search_title">Search</string>
+    <string name="search_hint">City Name</string>
+
+    <string name="weather_data_not_available">Weather data not available at the moment. Please type the city name and try again.</string>
 </resources>
