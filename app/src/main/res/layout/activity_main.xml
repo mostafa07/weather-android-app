@@ -36,32 +36,30 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/city_name_text_view"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="end"
+                android:gravity="start"
+                android:maxLines="2"
                 android:text="@{viewModel.currentWeather.city}"
                 android:textAppearance="@style/TextAppearance.Material3.DisplayLarge"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/temperature_text_view"
-                app:layout_constraintEnd_toStartOf="@id/country_name_text_view"
-                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Cairo" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/country_name_text_view"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:text="@{viewModel.currentWeather.country}"
                 android:textAppearance="@style/TextAppearance.Material3.DisplaySmall"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/city_name_text_view"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/city_name_text_view"
-                app:layout_constraintTop_toTopOf="@id/city_name_text_view"
-                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/city_name_text_view"
+                app:layout_constraintTop_toBottomOf="@+id/city_name_text_view"
                 tools:text="Egypt" />
 
             <com.google.android.material.textview.MaterialTextView
